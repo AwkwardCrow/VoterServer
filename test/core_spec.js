@@ -107,6 +107,16 @@ describe('application logic', () => {
       }));
     });
 
+    it('ignores vote for non-pair entry', () => {
+      const state = Map({
+          pair: List.of('Trainspotting', '28 Days Later')
+      });
+      const nextState = vote(state, 'The Beach');
+      expect(nextState).to.equal(Map({
+          pair: List.of('Trainspotting', '28 Days Later')
+      }));
+    });
+
     it('adds to existing tally for the voted entry', () => {
       const state = Map({
           pair: List.of('Trainspotting', '28 Days Later'),
